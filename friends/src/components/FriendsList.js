@@ -1,15 +1,20 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth';
+
 
 const FriendsList = () => {
     const [friends, setFriends] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/friends')
+        axiosWithAuth()
+            .get('http://localhost:5000/api/friends')
             .then((res) => {
-                console.log(res);
+                setFriends(res);
             })
-    })
+            .catch(err => {
+                console.log(err);
+            })
+    }, []);
     return(
         <div>
             <p>friends</p>

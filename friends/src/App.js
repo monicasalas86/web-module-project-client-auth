@@ -3,12 +3,16 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
+import Logout from './components/Logout';
 
 import PrivateRoute from './components/PrivateRoute';
 
 import './App.css';
 
 function App() {
+
+  let isLoggenIn = localStorage.getItem('token');
+
   return (
     <Router>
       <div className="App">
@@ -17,11 +21,15 @@ function App() {
             <Link to='/login'>Login</Link>
           </li>
           <li>
-            <Link to='friendslist'>Friends List</Link>
+            <Link to='/logout'>Logout</Link>
+          </li>
+          <li>
+            {isLoggenIn && <Link to='friendslist'>Friends List</Link>}
           </li>
         </ul>
         <Switch>
-          <PrivateRoute exact path='/friendslist' component={FriendsList}/>
+          <PrivateRoute path='/friendslist' component={FriendsList}/>
+          <PrivateRoute path='/logout' component={Logout}/>
           <Route path='/login' component={Login}/>
         </Switch>
       </div>

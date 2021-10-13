@@ -16,6 +16,8 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <header>
+          <h1>F R I E N D S</h1>
         <ul>
           <li>
             <Link to='/login'>Login</Link>
@@ -27,6 +29,7 @@ function App() {
             {isLoggenIn && <Link to='friendslist'>Friends List</Link>}
           </li>
         </ul>
+        </header>
         <Switch>
           <PrivateRoute path='/friendslist' component={FriendsList}/>
           <PrivateRoute path='/logout' component={Logout}/>

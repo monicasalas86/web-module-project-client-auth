@@ -34,6 +34,7 @@ function App() {
           <PrivateRoute path='/friendslist' component={FriendsList}/>
           <PrivateRoute path='/logout' component={Logout}/>
           <Route path='/login' component={Login}/>
+          <Route path="/" component={Login} />
         </Switch>
       </div>
     </Router>
